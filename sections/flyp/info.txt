@@ -1,0 +1,7 @@
+== Description ==
+
+Flyp lets you make cards that flip over (front and back)
+
+== Changelog ==
+= 1.0 =
+* Initial release.
