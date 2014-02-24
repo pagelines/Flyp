@@ -15,8 +15,6 @@ Filter: component
 /*
 Notes:
 - card-specific interval/timeout wording and coding
-- text domain
-- proper license
 - firefox img max-width not working (did not test IE)
 - change 'check' to 'select' because of bug in v1.1 and prior
 - cannot do border-radius:50%; (circle effect) because cards are not square (i.e. effect turns them into ovals instead of circles). Can't set a pixel width because then columns won't work. But could add border-radius:1000px; or something like that if you really want ovals.
@@ -56,38 +54,38 @@ class Flyp extends PageLinesSection {
 
 
 		$colorpresets = array( // ALL HEX's LOWER-CASE
-			pl_hashify(pl_setting('bodybg'))	=> array('name' => __('PL Background Base Setting', $this->id) ),
-			pl_hashify(pl_setting('text_primary'))	=> array('name' => __('PL Text Base Setting', $this->id) ),
-			pl_hashify(pl_setting('linkcolor'))	=> array('name' => __('PL Link Base Setting', $this->id) ),
-			'#fbfbfb'	=> array('name' => __('Light Gray', $this->id) ),
-			'#bfbfbf'	=> array('name' => __('Medium Gray', $this->id) ),
-			'#1abc9c'	=> array('name' => __('* Turquoise', $this->id) ),
-			'#16a085'	=> array('name' => __('* Green Sea', $this->id) ),
-			'#40d47e'	=> array('name' => __('* Emerald', $this->id) ),
-			'#27ae60'	=> array('name' => __('* Nephritis', $this->id) ),
-			'#3498db'	=> array('name' => __('* Peter River', $this->id) ),
-			'#2980b9'	=> array('name' => __('* Belize Hole', $this->id) ),
-			'#9b59b6'	=> array('name' => __('* Amethyst', $this->id) ),
-			'#8e44ad'	=> array('name' => __('* Wisteria', $this->id) ),
-			'#34495e'	=> array('name' => __('* Wet Asphalt', $this->id) ),
-			'#2c3e50'	=> array('name' => __('* Midnight Blue', $this->id) ),
-			'#f1c40f'	=> array('name' => __('* Sun Flower', $this->id) ),
-			'#f39c12'	=> array('name' => __('* Orange', $this->id) ),
-			'#e67e22'	=> array('name' => __('* Carrot', $this->id) ),
-			'#d35400'	=> array('name' => __('* Pumpkin', $this->id) ),
-			'#e74c3c'	=> array('name' => __('* Alizarin', $this->id) ),
-			'#c0392b'	=> array('name' => __('* Pomegranate', $this->id) ),
-			'#ecf0f1'	=> array('name' => __('* Clouds', $this->id) ),
-			'#bdc3c7'	=> array('name' => __('* Silver', $this->id) ),
-			'#95a5a6'	=> array('name' => __('* Concrete', $this->id) ),
-			'#7f8c8d'	=> array('name' => __('* Asbestos', $this->id) ),
-			'#791869'	=> array('name' => __('Plum', $this->id) ),
-			'#c23b3d'	=> array('name' => __('Red', $this->id) ),
-			'#0c5cea'	=> array('name' => __('Blue', $this->id) ),
-			'#00aff0'	=> array('name' => __('Light Blue', $this->id) ),
-			'#88b500'	=> array('name' => __('Lime', $this->id) ),
-			'#cf3f20'	=> array('name' => __('Orangey', $this->id) ),
-			'#f27a00'	=> array('name' => __('Yellowy-Orange', $this->id) ),
+			pl_hashify(pl_setting('bodybg'))	=> array('name' => __('PL Background Base Setting', 'flyp') ),
+			pl_hashify(pl_setting('text_primary'))	=> array('name' => __('PL Text Base Setting', 'flyp') ),
+			pl_hashify(pl_setting('linkcolor'))	=> array('name' => __('PL Link Base Setting', 'flyp') ),
+			'#fbfbfb'	=> array('name' => __('Light Gray', 'flyp') ),
+			'#bfbfbf'	=> array('name' => __('Medium Gray', 'flyp') ),
+			'#1abc9c'	=> array('name' => __('* Turquoise', 'flyp') ),
+			'#16a085'	=> array('name' => __('* Green Sea', 'flyp') ),
+			'#40d47e'	=> array('name' => __('* Emerald', 'flyp') ),
+			'#27ae60'	=> array('name' => __('* Nephritis', 'flyp') ),
+			'#3498db'	=> array('name' => __('* Peter River', 'flyp') ),
+			'#2980b9'	=> array('name' => __('* Belize Hole', 'flyp') ),
+			'#9b59b6'	=> array('name' => __('* Amethyst', 'flyp') ),
+			'#8e44ad'	=> array('name' => __('* Wisteria', 'flyp') ),
+			'#34495e'	=> array('name' => __('* Wet Asphalt', 'flyp') ),
+			'#2c3e50'	=> array('name' => __('* Midnight Blue', 'flyp') ),
+			'#f1c40f'	=> array('name' => __('* Sun Flower', 'flyp') ),
+			'#f39c12'	=> array('name' => __('* Orange', 'flyp') ),
+			'#e67e22'	=> array('name' => __('* Carrot', 'flyp') ),
+			'#d35400'	=> array('name' => __('* Pumpkin', 'flyp') ),
+			'#e74c3c'	=> array('name' => __('* Alizarin', 'flyp') ),
+			'#c0392b'	=> array('name' => __('* Pomegranate', 'flyp') ),
+			'#ecf0f1'	=> array('name' => __('* Clouds', 'flyp') ),
+			'#bdc3c7'	=> array('name' => __('* Silver', 'flyp') ),
+			'#95a5a6'	=> array('name' => __('* Concrete', 'flyp') ),
+			'#7f8c8d'	=> array('name' => __('* Asbestos', 'flyp') ),
+			'#791869'	=> array('name' => __('Plum', 'flyp') ),
+			'#c23b3d'	=> array('name' => __('Red', 'flyp') ),
+			'#0c5cea'	=> array('name' => __('Blue', 'flyp') ),
+			'#00aff0'	=> array('name' => __('Light Blue', 'flyp') ),
+			'#88b500'	=> array('name' => __('Lime', 'flyp') ),
+			'#cf3f20'	=> array('name' => __('Orangey', 'flyp') ),
+			'#f27a00'	=> array('name' => __('Yellowy-Orange', 'flyp') ),
 		);
 
 
@@ -97,56 +95,56 @@ class Flyp extends PageLinesSection {
 			'key'		=> 'flyp_config',
 			'type'		=> 'multi',
 			'col'		=> 1, //left side
-			'title'		=> __('Flyp Container Settings', $this->id),
+			'title'		=> __('Flyp Container Settings', 'flyp'),
 			'help'		=> '<strong><a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=help&utm_campaign=flyp_section" target="_blank">Flyp Section Helpful Tips</a></strong>',
 			'opts'	=> array(
 				array(
 					'key'	=> 'flyp_type',
 					'type' 	=> 'select',
 					//'default' => 'flyp_over',
-					'label'	=> __('Flyp Effect/Type<br/>If you chose <span style="color: darkred;">Button</span>, you will need to manually add something like<br/><span style="color: darkred;">[pl_button]Click to Flip[/pl_button]</span> (see <a href="http://docs.pagelines.com/tutorials/shortcodes" target="_blank">PL Shortcodes</a>)<br/>to both the front and back of each card.', $this->id),
+					'label'	=> __('Flyp Effect/Type<br/>If you chose <span style="color: darkred;">Button</span>, you will need to manually add something like<br/><span style="color: darkred;">[pl_button]Click to Flip[/pl_button]</span> (see <a href="http://docs.pagelines.com/tutorials/shortcodes" target="_blank">PL Shortcodes</a>)<br/>to both the front and back of each card.', 'flyp'),
 					'opts' => array(
-						'flyp_over'		=> array('name' => __('Over (Default)', $this->id) ),
-						'flyp_click'	=> array('name' => __('Click', $this->id) ),
-						'flyp_button'	=> array('name' => __('Button', $this->id) ),
-						'flyp_auto'		=> array('name' => __('Auto', $this->id) ),
+						'flyp_over'		=> array('name' => __('Over (Default)', 'flyp') ),
+						'flyp_click'	=> array('name' => __('Click', 'flyp') ),
+						'flyp_button'	=> array('name' => __('Button', 'flyp') ),
+						'flyp_auto'		=> array('name' => __('Auto', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_direction',
 					'type' 	=> 'select',
 					'default' => 'right',
-					'label'	=> __('Flyp Direction', $this->id),
+					'label'	=> __('Flyp Direction', 'flyp'),
 					'opts' => array(
-						'random'	=> array('name' => __('Randomized', $this->id) ),
-						'right'		=> array('name' => __('Right (Default)', $this->id) ),
-						'left'		=> array('name' => __('Left', $this->id) ),
-						'top'		=> array('name' => __('Top', $this->id) ),
-						'bottom'	=> array('name' => __('Bottom', $this->id) ),
+						'random'	=> array('name' => __('Randomized', 'flyp') ),
+						'right'		=> array('name' => __('Right (Default)', 'flyp') ),
+						'left'		=> array('name' => __('Left', 'flyp') ),
+						'top'		=> array('name' => __('Top', 'flyp') ),
+						'bottom'	=> array('name' => __('Bottom', 'flyp') ),
 					)
 				),
 				array(
 					'key'		=> 'flyp_auto_interval',
 					'type'		=> 'text',
 					//'default'	=> '3000',
-					'label' 	=> __('Auto Flip Interval (milliseconds)<br/>Set time for a card to flip automatically back and front<br/>Default is 3000 (3 seconds)', $this->id)
+					'label' 	=> __('Auto Flip Interval (milliseconds)<br/>Set time for a card to flip automatically back and front<br/>Default is 3000 (3 seconds)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_auto_timeout',
 					'type'		=> 'text',
 					//'default'	=> '2000',
-					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Set time a card will flip back after being clicked and must be less than Auto Flip Interval<br/>Cards do not flip when mouse is hovering<br/>Default is 2000 (2 seconds)', $this->id)
+					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Set time a card will flip back after being clicked and must be less than Auto Flip Interval<br/>Cards do not flip when mouse is hovering<br/>Default is 2000 (2 seconds)', 'flyp')
 				),
 /*
 				array(
 					'key'	=> 'flyp_float',
 					'type' 	=> 'select',
 					//'default' => 'left',
-					'label'	=> __('Flyp Float', $this->id),
+					'label'	=> __('Flyp Float', 'flyp'),
 					'opts' => array(
-						'left'		=> array('name' => __('Left (Default)', $this->id) ),
-						'right'		=> array('name' => __('Right', $this->id) ),
-						'none'		=> array('name' => __('None', $this->id) ),
+						'left'		=> array('name' => __('Left (Default)', 'flyp') ),
+						'right'		=> array('name' => __('Right', 'flyp') ),
+						'none'		=> array('name' => __('None', 'flyp') ),
 					)
 				),
 */
@@ -156,126 +154,126 @@ class Flyp extends PageLinesSection {
 					'count_start'	=> 1,
 					'count_number'	=> 12,
 					'default'		=> '4',
-					'label' 	=> __( 'Number of Columns Wide Per Card (12 column grid)', $this->id ),
+					'label' 	=> __( 'Number of Columns Wide Per Card (12 column grid)', 'flyp' ),
 				),
 				array(
 					'key'		=> 'flyp_height',
 					'type'		=> 'text',
 					//'default'	=> '200px',
-					'label' 	=> __('Height of Flyp Cards (Default: "200") (pixels)', $this->id)
+					'label' 	=> __('Height of Flyp Cards (Default: "200") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_top',
 					//'default'	=> '',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Interior Padding - TOP (Default: "0") (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Interior Padding - TOP (Default: "0") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_right',
 					//'default'	=> '',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Interior Padding - RIGHT (Default: Top\'s) (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Interior Padding - RIGHT (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_bottom',
 					//'default'	=> '',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Interior Padding - BOTTOM (Default: Top\'s) (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Interior Padding - BOTTOM (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_left',
 					//'default'	=> '',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Interior Padding - LEFT (Default: Top\'s) (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Interior Padding - LEFT (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
 					'key'	=> 'flyp_font',
 					'type'	=> 'fonts',
-					'label'	=> __('Flyp Cards Font', $this->id)
+					'label'	=> __('Flyp Cards Font', 'flyp')
 				),
 				array(
 					'key'	=> 'flyp_textalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Flyp <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> (Default: Center)', $this->id),
+					'label'	=> __('Flyp <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> (Default: Center)', 'flyp'),
 					'opts' => array(
-						'center'	=> array('name' => __('Center (Default)', $this->id) ),
-						'left'		=> array('name' => __('Left', $this->id) ),
-						'right'		=> array('name' => __('Right', $this->id) ),
-						'justify'	=> array('name' => __('Justify', $this->id) ),
+						'center'	=> array('name' => __('Center (Default)', 'flyp') ),
+						'left'		=> array('name' => __('Left', 'flyp') ),
+						'right'		=> array('name' => __('Right', 'flyp') ),
+						'justify'	=> array('name' => __('Justify', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_verticalalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Flyp <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> (Default: Middle)', $this->id),
+					'label'	=> __('Flyp <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> (Default: Middle)', 'flyp'),
 					'opts' => array(
-						'middle'	=> array('name' => __('Middle (Default)', $this->id) ),
-						'top'		=> array('name' => __('Top', $this->id) ),
-						'bottom'	=> array('name' => __('Bottom', $this->id) ),
+						'middle'	=> array('name' => __('Middle (Default)', 'flyp') ),
+						'top'		=> array('name' => __('Top', 'flyp') ),
+						'bottom'	=> array('name' => __('Bottom', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_shadow',
 					'type' 	=> 'select',
 					//'default' => 'shadow',
-					'label'	=> __('Card Drop Shadow (Default: ON)', $this->id),
+					'label'	=> __('Card Drop Shadow (Default: ON)', 'flyp'),
 					'opts' => array(
-						'shadow'	=> array('name' => __('Shadow ON (Default)', $this->id) ),
-						'noshadow'	=> array('name' => __('Shadow OFF', $this->id) ),
+						'shadow'	=> array('name' => __('Shadow ON (Default)', 'flyp') ),
+						'noshadow'	=> array('name' => __('Shadow OFF', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_color_text',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_color_text_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Text Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Text Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 				array(
 					'key'	=> 'flyp_color_bg',
 					'type' 	=> 'select',
 					//'default' => '#fbfbfb',
-					'label'	=> __('Flyp Background Color Preset<br/>Suggestion: Light Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Background Color Preset<br/>Suggestion: Light Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_color_bg_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Background Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Background Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 				array(
 					'key'	=> 'flyp_color_border',
 					'type' 	=> 'select',
 					//'default' => '#bfbfbf',
-					'label'	=> __('Flyp Border Color Preset<br/>Suggestion: Medium Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Border Color Preset<br/>Suggestion: Medium Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_color_border_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Border Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Border Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 				array(
 					'key'		=> 'flyp_border_width',
 					//'default'	=> '1',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Border Width (Default: "1") (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Border Width (Default: "1") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_border_radius',
 					//'default'	=> '2',
 					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Border Radius / Rounded Corners (Default: "2") (pixels)', $this->id)
+					'label' 	=> __('Flyp Card Border Radius / Rounded Corners (Default: "2") (pixels)', 'flyp')
 				),
 
 			) //opts
@@ -288,108 +286,108 @@ class Flyp extends PageLinesSection {
 	    	'type'		=> 'accordion',
 	    	//'opts_cnt'	=> 3, //number of accordions to display at first
 			'col'		=> 2, //right side
-			'title'		=> __('Flyp Cards', $this->id),
-			'post_type'	=> __('Flyp Card', $this->id), //what shows up for each accordion option -- does not actually register a custom post type and therefore ok to have spaces
+			'title'		=> __('Flyp Cards', 'flyp'),
+			'post_type'	=> __('Flyp Card', 'flyp'), //what shows up for each accordion option -- does not actually register a custom post type and therefore ok to have spaces
 			'opts'	=> array(
 				array(
 					'key'	=> 'flyp_front',
 					'type'	=> 'textarea',
-					'label'	=> __('Card Front Content<br/><span style="color: darkred;">It is recommended to NOT use [pl_video] with Vimeo on the FRONT of cards.</style> If you do, it is recommended to turn OFF the max-height constraint for the side of a card that you use [pl_video] with Vimeo, otherwise going full-screen will not work.', $this->id)
+					'label'	=> __('Card Front Content<br/><span style="color: darkred;">It is recommended to NOT use [pl_video] with Vimeo on the FRONT of cards.</style> If you do, it is recommended to turn OFF the max-height constraint for the side of a card that you use [pl_video] with Vimeo, otherwise going full-screen will not work.', 'flyp')
 				),
 /*
 				array(
 					'key'	=> 'flyp_front_font',
 					'type'	=> 'fonts',
-					'label'	=> __('Card Front Font', $this->id)
+					'label'	=> __('Card Front Font', 'flyp')
 				),
 */
 				array(
 					'key'	=> 'flyp_front_textalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Front <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> Override', $this->id),
+					'label'	=> __('Card Front <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> Override', 'flyp'),
 					'opts' => array(
-						'center'	=> array('name' => __('Center', $this->id) ),
-						'left'		=> array('name' => __('Left', $this->id) ),
-						'right'		=> array('name' => __('Right', $this->id) ),
-						'justify'	=> array('name' => __('Justify', $this->id) ),
+						'center'	=> array('name' => __('Center', 'flyp') ),
+						'left'		=> array('name' => __('Left', 'flyp') ),
+						'right'		=> array('name' => __('Right', 'flyp') ),
+						'justify'	=> array('name' => __('Justify', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_front_verticalalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Front <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> Override', $this->id),
+					'label'	=> __('Card Front <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> Override', 'flyp'),
 					'opts' => array(
-						'middle'	=> array('name' => __('Middle', $this->id) ),
-						'top'		=> array('name' => __('Top', $this->id) ),
-						'bottom'	=> array('name' => __('Bottom', $this->id) ),
+						'middle'	=> array('name' => __('Middle', 'flyp') ),
+						'top'		=> array('name' => __('Top', 'flyp') ),
+						'bottom'	=> array('name' => __('Bottom', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_front_shadow',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Front Drop Shadow Override', $this->id),
+					'label'	=> __('Card Front Drop Shadow Override', 'flyp'),
 					'opts' => array(
-						'shadow'	=> array('name' => __('Shadow ON', $this->id) ),
-						'noshadow'	=> array('name' => __('Shadow OFF', $this->id) ),
+						'shadow'	=> array('name' => __('Shadow ON', 'flyp') ),
+						'noshadow'	=> array('name' => __('Shadow OFF', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_front_disable_maxheight',
 					'type'	=> 'check',
-					'label'	=> __('(Advanced) Front: disable automatically adding style="max-height:____;" to img and iframe', $this->id)
+					'label'	=> __('(Advanced) Front: disable automatically adding style="max-height:____;" to img and iframe', 'flyp')
 				),
 				array(
 					'key'	=> 'flyp_back',
 					'type'	=> 'textarea',
-					'label'	=> __('Card Back Content<br/><span style="color: darkred;">If using [pl_video] with Vimeo, it is recommended to turn OFF the max-height constraint, otherwise going full-screen will not work.</span>', $this->id)
+					'label'	=> __('Card Back Content<br/><span style="color: darkred;">If using [pl_video] with Vimeo, it is recommended to turn OFF the max-height constraint, otherwise going full-screen will not work.</span>', 'flyp')
 				),
 /*
 				array(
 					'key'	=> 'flyp_back_font',
 					'type'	=> 'fonts',
-					'label'	=> __('Card Back Font', $this->id)
+					'label'	=> __('Card Back Font', 'flyp')
 				),
 */
 				array(
 					'key'	=> 'flyp_back_textalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Back <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> Override', $this->id),
+					'label'	=> __('Card Back <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align" target="_blank">text-align</a> Override', 'flyp'),
 					'opts' => array(
-						'center'	=> array('name' => __('Center', $this->id) ),
-						'left'		=> array('name' => __('Left', $this->id) ),
-						'right'		=> array('name' => __('Right', $this->id) ),
-						'justify'	=> array('name' => __('Justify', $this->id) ),
+						'center'	=> array('name' => __('Center', 'flyp') ),
+						'left'		=> array('name' => __('Left', 'flyp') ),
+						'right'		=> array('name' => __('Right', 'flyp') ),
+						'justify'	=> array('name' => __('Justify', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_back_verticalalign',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Back <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> Override', $this->id),
+					'label'	=> __('Card Back <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align" target="_blank">vertical-align</a> Override', 'flyp'),
 					'opts' => array(
-						'middle'	=> array('name' => __('Middle', $this->id) ),
-						'top'		=> array('name' => __('Top', $this->id) ),
-						'bottom'	=> array('name' => __('Bottom', $this->id) ),
+						'middle'	=> array('name' => __('Middle', 'flyp') ),
+						'top'		=> array('name' => __('Top', 'flyp') ),
+						'bottom'	=> array('name' => __('Bottom', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_back_shadow',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Card Back Drop Shadow Override', $this->id),
+					'label'	=> __('Card Back Drop Shadow Override', 'flyp'),
 					'opts' => array(
-						'shadow'	=> array('name' => __('Shadow ON', $this->id) ),
-						'noshadow'	=> array('name' => __('Shadow OFF', $this->id) ),
+						'shadow'	=> array('name' => __('Shadow ON', 'flyp') ),
+						'noshadow'	=> array('name' => __('Shadow OFF', 'flyp') ),
 					)
 				),
 				array(
 					'key'	=> 'flyp_back_disable_maxheight',
 					'type'	=> 'check',
-					'label'	=> __('(Advanced) Back: disable automatically adding style="max-height:____;" to img and iframe', $this->id)
+					'label'	=> __('(Advanced) Back: disable automatically adding style="max-height:____;" to img and iframe', 'flyp')
 				),
 				array(
 					'key'			=> 'flyp_cols',
@@ -397,64 +395,64 @@ class Flyp extends PageLinesSection {
 					'count_start'	=> 1,
 					'count_number'	=> 12,
 					'default'		=> '4',
-					'label' 	=> __( 'Number of Columns Wide Override (12 column grid)', $this->id ),
+					'label' 	=> __( 'Number of Columns Wide Override (12 column grid)', 'flyp' ),
 				),
 				array(
 					'key'	=> 'flyp_card_direction',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Flyp Direction Override', $this->id),
+					'label'	=> __('Flyp Direction Override', 'flyp'),
 					'opts' => array(
-						'right'		=> array('name' => __('Right', $this->id) ),
-						'left'		=> array('name' => __('Left', $this->id) ),
-						'top'		=> array('name' => __('Top', $this->id) ),
-						'bottom'	=> array('name' => __('Bottom', $this->id) ),
+						'right'		=> array('name' => __('Right', 'flyp') ),
+						'left'		=> array('name' => __('Left', 'flyp') ),
+						'top'		=> array('name' => __('Top', 'flyp') ),
+						'bottom'	=> array('name' => __('Bottom', 'flyp') ),
 					)
 				),
 				array(
 					'key'		=> 'flyp_card_auto_timeout',
 					'type'		=> 'text',
 					//'default'	=> '2000',
-					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Override per card so they auto flip at different intervals and must be less than Auto Flip Interval', $this->id)
+					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Override per card so they auto flip at different intervals and must be less than Auto Flip Interval', 'flyp')
 				),
 				array(
 					'key'	=> 'flyp_card_color_text',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_card_color_text_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Text Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Text Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 				array(
 					'key'	=> 'flyp_card_color_bg',
 					'type' 	=> 'select',
 					//'default' => '#fbfbfb',
-					'label'	=> __('Flyp Background Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Background Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_card_color_bg_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Background Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Background Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 				array(
 					'key'	=> 'flyp_card_color_border',
 					'type' 	=> 'select',
 					//'default' => '#bfbfbf',
-					'label'	=> __('Flyp Border Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', $this->id),
+					'label'	=> __('Flyp Border Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
 					'opts' => $colorpresets,
 				),
 				array(
 					'key'	=> 'flyp_card_color_border_picker',
 					'type' 	=> 'color',
 					'default' => '',
-					'label'	=> __('Flyp Border Color Picker<br/>(will override preset if both are set)', $this->id),
+					'label'	=> __('Flyp Border Color Picker<br/>(will override preset if both are set)', 'flyp'),
 				),
 			)
 	    );
