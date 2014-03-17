@@ -3,5 +3,9 @@
 Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
+= 1.1 =
+* Fix for setting columns (no hard-coded option defaults).
+* Changed "advanced" overrides from check to select option types (will need to re-save the option).
+
 = 1.0 =
 * Initial release.

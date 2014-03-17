@@ -4,7 +4,7 @@ Section: Flyp
 Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
-Version: 1.0
+Version: 1.1
 Cloning: true
 PageLines: true
 v3: true
@@ -16,7 +16,6 @@ Filter: component
 Notes:
 - card-specific interval/timeout wording and coding
 - firefox img max-width not working (did not test IE)
-- change 'check' to 'select' because of bug in v1.1 and prior
 - cannot do border-radius:50%; (circle effect) because cards are not square (i.e. effect turns them into ovals instead of circles). Can't set a pixel width because then columns won't work. But could add border-radius:1000px; or something like that if you really want ovals.
 - used 'text' instead of 'text_small' or 'small_text' because of https://github.com/pagelines/DMS/issues/668
 */
@@ -153,8 +152,8 @@ class Flyp extends PageLinesSection {
 					'type' 			=> 'count_select',
 					'count_start'	=> 1,
 					'count_number'	=> 12,
-					'default'		=> '4',
-					'label' 	=> __( 'Number of Columns Wide Per Card (12 column grid)', 'flyp' ),
+					//'default'		=> '4',
+					'label' 	=> __( 'Number of Columns Wide Per Card (12 column grid, Default: 4)', 'flyp' ),
 				),
 				array(
 					'key'		=> 'flyp_height',
@@ -336,8 +335,11 @@ class Flyp extends PageLinesSection {
 				),
 				array(
 					'key'	=> 'flyp_front_disable_maxheight',
-					'type'	=> 'check',
-					'label'	=> __('(Advanced) Front: disable automatically adding style="max-height:____;" to img and iframe', 'flyp')
+					'type'	=> 'select',
+					'label'	=> __('(Advanced) Front: disable automatically adding style="max-height:____;" to img and iframe', 'flyp'),
+					'opts' => array(
+						'disable'	=> array('name' => __('Yes, Disable', 'flyp') ),
+					)
 				),
 				array(
 					'key'	=> 'flyp_back',
@@ -386,15 +388,18 @@ class Flyp extends PageLinesSection {
 				),
 				array(
 					'key'	=> 'flyp_back_disable_maxheight',
-					'type'	=> 'check',
-					'label'	=> __('(Advanced) Back: disable automatically adding style="max-height:____;" to img and iframe', 'flyp')
+					'type'	=> 'select',
+					'label'	=> __('(Advanced) Back: disable automatically adding style="max-height:____;" to img and iframe', 'flyp'),
+					'opts' => array(
+						'disable'	=> array('name' => __('Yes, Disable', 'flyp') ),
+					)
 				),
 				array(
 					'key'			=> 'flyp_cols',
 					'type' 			=> 'count_select',
 					'count_start'	=> 1,
 					'count_number'	=> 12,
-					'default'		=> '4',
+					//'default'		=> '4',
 					'label' 	=> __( 'Number of Columns Wide Override (12 column grid)', 'flyp' ),
 				),
 				array(
@@ -617,7 +622,9 @@ class Flyp extends PageLinesSection {
 						$front = str_replace('class="btn', 'class="fcbutton btn', $front); //add fcbutton class to [pl_button]'s output
 					}
 
-					if( pl_array_get('flyp_front_disable_maxheight', $flypitem, '') ) {} else {
+
+					$frontdisablemaxheight = pl_array_get('flyp_front_disable_maxheight', $flypitem, '');
+					if( $frontdisablemaxheight == 'disable' ) {} else {
 						if( strripos($front, '<img ') !== false && strripos($front, 'max-height:') === false ){
 							$front = str_replace('"', "'", $front); //replace all double quotes with single quotes
 							if( strripos($front, "<img style='") !== false ){
@@ -664,7 +671,8 @@ class Flyp extends PageLinesSection {
 						$back = str_replace('class="btn', 'class="fcbutton btn', $back); //add fcbutton class to [pl_button]'s output
 					}
 
-					if( pl_array_get('flyp_back_disable_maxheight', $flypitem, '') ) {} else {
+					$backdisablemaxheight = pl_array_get('flyp_back_disable_maxheight', $flypitem, '');
+					if( $backdisablemaxheight == 'disable' ) {} else {
 						if( strripos($back, '<img ') !== false && strripos($back, 'max-height:') === false ){
 							$back = str_replace('"', "'", $back); //replace all double quotes with single quotes
 							if( strripos($back, "<img style='") !== false ){
