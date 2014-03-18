@@ -4,7 +4,7 @@ Section: Flyp
 Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
-Version: 1.1
+Version: 1.1.1
 Cloning: true
 PageLines: true
 v3: true
