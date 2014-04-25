@@ -4,11 +4,11 @@ Section: Flyp
 Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
-Version: 1.1.1
+Version: 1.2
 Cloning: true
 PageLines: true
 v3: true
-Filter: component
+Filter: component, dual-width
 */
 
 
@@ -154,6 +154,15 @@ class Flyp extends PageLinesSection {
 					'count_number'	=> 12,
 					//'default'		=> '4',
 					'label' 	=> __( 'Number of Columns Wide Per Card (12 column grid, Default: 4)', 'flyp' ),
+				),
+				array(
+					'key'	=> 'flyp_cols_tightcards',
+					'type' 	=> 'select',
+					//'default' => '',
+					'label'	=> __('Remove space / gap / margin between cards?', 'flyp'),
+					'opts' => array(
+						'yes'	=> array('name' => __('Yes to Tight Cards', 'flyp') ),
+					)
 				),
 				array(
 					'key'		=> 'flyp_height',
@@ -508,6 +517,7 @@ class Flyp extends PageLinesSection {
 
 			//$float = ($this->opt('flyp_float')) ? $this->opt('flyp_float') : 'left';
 			$colsconfig = ($this->opt('flyp_cols_config')) ? $this->opt('flyp_cols_config') : 4;
+			$rowclosed = ($this->opt('flyp_cols_tightcards')) ? $this->opt('flyp_cols_tightcards') : '';
 
 			$height = ($this->opt('flyp_height')) ? $this->opt('flyp_height') : 200;
 					$height = preg_replace("/[^0-9]/","", $height);
@@ -744,8 +754,13 @@ class Flyp extends PageLinesSection {
 
 
 
-				if($spans == 0)
-					$output .= '<div class="row fix">';
+				if($spans == 0){
+					if($rowclosed) {
+						$output .= '<div class="row row-closed fix">';
+					} else {
+						$output .= '<div class="row fix">';
+					}
+				}
 
 
 				$output .= sprintf(
