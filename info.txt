@@ -4,6 +4,9 @@ Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
 
+= 1.3 =
+* Removed small bit of styling now that it's been added into DMS 2.0.5
+
 = 1.2 =
 * Added option to remove the space / gap / margin between cards (only DMS 2) -- i.e. "Tight Cards". Example screenshot added to PageLines.com/Shop.
 * Flyp can now also be a full-width section (only DMS 2)
