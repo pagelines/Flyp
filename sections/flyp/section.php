@@ -4,7 +4,7 @@ Section: Flyp
 Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
-Version: 1.3
+Version: 1.4
 Cloning: true
 PageLines: true
 v3: true
@@ -17,7 +17,7 @@ Notes:
 - card-specific interval/timeout wording and coding
 - firefox img max-width not working (did not test IE)
 - cannot do border-radius:50%; (circle effect) because cards are not square (i.e. effect turns them into ovals instead of circles). Can't set a pixel width because then columns won't work. But could add border-radius:1000px; or something like that if you really want ovals.
-- used 'text' instead of 'text_small' or 'small_text' because of https://github.com/pagelines/DMS/issues/668
+- make height 0 and padding-bottom = width and height will be same as width when wider than 767px (then is just 100% width) -- http://stackoverflow.com/a/14088300 -- could then do circle (i.e. border-radius: 50%;)
 */
 
 class Flyp extends PageLinesSection {
@@ -124,13 +124,13 @@ class Flyp extends PageLinesSection {
 				),
 				array(
 					'key'		=> 'flyp_auto_interval',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					//'default'	=> '3000',
 					'label' 	=> __('Auto Flip Interval (milliseconds)<br/>Set time for a card to flip automatically back and front<br/>Default is 3000 (3 seconds)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_auto_timeout',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					//'default'	=> '2000',
 					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Set time a card will flip back after being clicked and must be less than Auto Flip Interval<br/>Cards do not flip when mouse is hovering<br/>Default is 2000 (2 seconds)', 'flyp')
 				),
@@ -166,32 +166,32 @@ class Flyp extends PageLinesSection {
 				),
 				array(
 					'key'		=> 'flyp_height',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					//'default'	=> '200px',
 					'label' 	=> __('Height of Flyp Cards (Default: "200") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_top',
 					//'default'	=> '',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					'label' 	=> __('Flyp Card Interior Padding - TOP (Default: "0") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_right',
 					//'default'	=> '',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					'label' 	=> __('Flyp Card Interior Padding - RIGHT (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_bottom',
 					//'default'	=> '',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					'label' 	=> __('Flyp Card Interior Padding - BOTTOM (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_padding_within_left',
 					//'default'	=> '',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					'label' 	=> __('Flyp Card Interior Padding - LEFT (Default: Top\'s) (pixels)', 'flyp')
 				),
 				array(
@@ -274,14 +274,14 @@ class Flyp extends PageLinesSection {
 				array(
 					'key'		=> 'flyp_border_width',
 					//'default'	=> '1',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					'label' 	=> __('Flyp Card Border Width (Default: "1") (pixels)', 'flyp')
 				),
 				array(
 					'key'		=> 'flyp_border_radius',
-					//'default'	=> '2',
-					'type'		=> 'text',
-					'label' 	=> __('Flyp Card Border Radius / Rounded Corners (Default: "2") (pixels)', 'flyp')
+					//'default'	=> '0',
+					'type'		=> 'text_small',
+					'label' 	=> __('Flyp Card Border Radius / Rounded Corners (Default: "0") (pixels)', 'flyp')
 				),
 
 			) //opts
@@ -425,7 +425,7 @@ class Flyp extends PageLinesSection {
 				),
 				array(
 					'key'		=> 'flyp_card_auto_timeout',
-					'type'		=> 'text',
+					'type'		=> 'text_small',
 					//'default'	=> '2000',
 					'label' 	=> __('Auto Flip Timeout (milliseconds)<br/>Override per card so they auto flip at different intervals and must be less than Auto Flip Interval', 'flyp')
 				),
@@ -549,7 +549,7 @@ class Flyp extends PageLinesSection {
 				$borderwidth = $this->opt('flyp_border_width') ? $this->opt('flyp_border_width') : 1;
 					$borderwidth = preg_replace("/[^0-9]/","", $borderwidth);
 
-				$borderradius = $this->opt('flyp_border_radius') ? $this->opt('flyp_border_radius') : 2;
+				$borderradius = $this->opt('flyp_border_radius') ? $this->opt('flyp_border_radius') : 0;
 					$borderradius = preg_replace("/[^0-9]/","", $borderradius);
 			}
 

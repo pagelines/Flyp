@@ -4,6 +4,10 @@ Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
 
+= 1.4 =
+* Changed default border radius from 2px to 0px (was previously not possible to remove border radius (i.e. rounded corners) while also having a border color). If you had the default 2px, just add in "2" and you'll get it back.
+* Changed inputs from 'text' to 'text_small' (option type only works in DMS 2).
+
 = 1.3 =
 * Removed small bit of styling now that it's been added into DMS 2.0.5
 
