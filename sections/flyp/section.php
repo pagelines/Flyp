@@ -4,7 +4,7 @@ Section: Flyp
 Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
-Version: 1.4
+Version: 1.5
 Cloning: true
 PageLines: true
 v3: true
@@ -589,10 +589,6 @@ class Flyp extends PageLinesSection {
 				$colorbg = is_array($colorbg) ? array_shift($colorbg) : $colorbg;
 				$colorbg = ($colorbg) ? pl_hashify($colorbg) : '';
 
-			$styleeachcard = sprintf('padding: %spx %spx %spx %spx;', $paddingtop, $paddingright, $paddingbottom, $paddingleft);
-				$styleeachcard .= ($colorbg) ? sprintf(' background-color: %s;', $colorbg) : '';
-				$styleeachcard .= ($colorborder) ? sprintf(' border-radius: %spx; border: %spx solid %s;', $borderradius, $borderwidth, $colorborder) : '';
-
 
 
 			// EACH ACCORDION
@@ -747,11 +743,44 @@ class Flyp extends PageLinesSection {
 				}
 
 
+				//individual card's color settings
+				if( pl_array_get('flyp_card_color_text_picker', $flypitem, '') ) {
+					$cardcolortext = pl_array_get('flyp_card_color_text_picker', $flypitem, '');
+				} elseif( pl_array_get('flyp_card_color_text', $flypitem, '') ) {
+					$cardcolortext = pl_array_get('flyp_card_color_text', $flypitem, '');
+				} else {
+					$cardcolortext = '';
+				}
+					$cardcolortext = is_array($cardcolortext) ? array_shift($cardcolortext) : $cardcolortext;
+					$cardcolortext = ($cardcolortext) ? pl_hashify($cardcolortext) : $colortext;
 
-				$cardcolortext = ($this->opt('flyp_card_color_text')) ? pl_hashify($this->opt('flyp_card_color_text')) : '';
-				$cardcolorbg = ($this->opt('flyp_card_color_bg')) ? pl_hashify($this->opt('flyp_card_color_bg')) : '';
-				$cardcolorborder = ($this->opt('flyp_card_color_border')) ? pl_hashify($this->opt('flyp_card_color_border')) : '';
+				if( pl_array_get('flyp_card_color_bg_picker', $flypitem, '') ) {
+					$cardcolorbg = pl_array_get('flyp_card_color_bg_picker', $flypitem, '');
+				} elseif( pl_array_get('flyp_card_color_bg', $flypitem, '') ) {
+					$cardcolorbg = pl_array_get('flyp_card_color_bg', $flypitem, '');
+				} else {
+					$cardcolorbg = '';
+				}
+					$cardcolorbg = is_array($cardcolorbg) ? array_shift($cardcolorbg) : $cardcolorbg;
+					$cardcolorbg = ($cardcolorbg) ? pl_hashify($cardcolorbg) : $colorbg;
 
+				if( pl_array_get('flyp_card_color_border_picker', $flypitem, '') ) {
+					$cardcolorborder = pl_array_get('flyp_card_color_border_picker', $flypitem, '');
+				} elseif( pl_array_get('flyp_card_color_border', $flypitem, '') ) {
+					$cardcolorborder = pl_array_get('flyp_card_color_border', $flypitem, '');
+				} else {
+					$cardcolorborder = '';
+				}
+					$cardcolorborder = is_array($cardcolorborder) ? array_shift($cardcolorborder) : $cardcolorborder;
+					$cardcolorborder = ($cardcolorborder) ? pl_hashify($cardcolorborder) : $colorborder;
+
+
+
+			// "each card" meaning both front and back are the same
+			$styleeachcard = sprintf('padding: %spx %spx %spx %spx;', $paddingtop, $paddingright, $paddingbottom, $paddingleft);
+				$styleeachcard .= ($cardcolortext) ? sprintf(' color: %s;', $cardcolortext) : '';
+				$styleeachcard .= ($cardcolorbg) ? sprintf(' background-color: %s;', $cardcolorbg) : '';
+				$styleeachcard .= ($cardcolorborder) ? sprintf(' border-radius: %spx; border: %spx solid %s;', $borderradius, $borderwidth, $cardcolorborder) : '';
 
 
 				if($spans == 0){
