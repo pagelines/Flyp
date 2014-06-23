@@ -70,6 +70,23 @@ div.flyp_card-container {
 
 	// === BEGINNING EFFECT ===
 
+	.flyp_card[data-direction="top"] .flyp_front,
+	.flyp_card[data-direction="bottom"] .flyp_front {
+		-webkit-transform: rotateX(0deg);
+		   -moz-transform: rotateX(0deg);
+		     -o-transform: rotateX(0deg);
+		    -ms-transform: rotateX(0deg);
+		        transform: rotateX(0deg);
+	}
+	.flyp_card[data-direction="right"] .flyp_front,
+	.flyp_card[data-direction="left"] .flyp_front {
+		-webkit-transform: rotateY(0deg);
+		 -moz-transform: rotateY(0deg);
+		   -o-transform: rotateY(0deg);
+		  -ms-transform: rotateY(0deg);
+		      transform: rotateY(0deg);
+	}
+
 	.flyp_card[data-direction="top"] .flyp_back,
 	.flyp_card[data-direction="bottom"] .flyp_back {
 		-webkit-transform: rotateX(180deg);

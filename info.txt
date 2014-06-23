@@ -4,6 +4,9 @@ Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
 
+= 1.6 =
+* Fix for Mac Firefox v30 displaying front image on back of card when both sides had images. Props Chris Johnston.
+
 = 1.5 =
 * Fix for setting per-card color overrides. Now works.
 
