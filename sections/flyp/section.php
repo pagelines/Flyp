@@ -14,9 +14,7 @@ Filter: component, dual-width
 /*
 Notes:
 - card-specific interval/timeout wording and coding
-- firefox img max-width not working (did not test IE)
-- cannot do border-radius:50%; (circle effect) because cards are not square (i.e. effect turns them into ovals instead of circles). Can't set a pixel width because then columns won't work. But could add border-radius:1000px; or something like that if you really want ovals.
-- make height 0 and padding-bottom = width and height will be same as width when wider than 767px (then is just 100% width) -- http://stackoverflow.com/a/14088300 -- could then do circle (i.e. border-radius: 50%;)
+- firefox img max-width not working (did not test IE) --> because of <span><span></span></span> with display: table and display: table-cell (which I think is only needed as part of vertical align middle)
 */
 
 class Flyp extends PageLinesSection {
@@ -158,9 +156,19 @@ class Flyp extends PageLinesSection {
 					'key'	=> 'flyp_cols_tightcards',
 					'type' 	=> 'select',
 					//'default' => '',
-					'label'	=> __('Remove space / gap / margin between cards?', 'flyp'),
+					'label'	=> __('Remove space / gap / margin between cards (.row-closed)?', 'flyp'),
 					'opts' => array(
 						'yes'	=> array('name' => __('Yes to Tight Cards', 'flyp') ),
+					)
+				),
+				array(
+					'key'	=> 'flyp_cols_squarecards',
+					'type' 	=> 'select',
+					//'default' => '',
+					'label'	=> __('Make all cards square-shaped (.row-squared)?', 'flyp'),
+					'help'	=> __('Note: at some screen widths (481px to 767px), square shape is abandoned for rectangle shape for better display because otherwise square is likely taller than browser window (part of DMS core styling).<br><br>Tip: to create circle-shaped cards, use .row-squared and then set "Flyp Card Border Radius / Rounded Corners" to something like 2000px (will create ovals when not using square-shaped cards).', 'flyp'),
+					'opts' => array(
+						'yes'	=> array('name' => __('Yes to Squared Cards', 'flyp') ),
 					)
 				),
 				array(
@@ -517,6 +525,7 @@ class Flyp extends PageLinesSection {
 			//$float = ($this->opt('flyp_float')) ? $this->opt('flyp_float') : 'left';
 			$colsconfig = ($this->opt('flyp_cols_config')) ? $this->opt('flyp_cols_config') : 4;
 			$rowclosed = ($this->opt('flyp_cols_tightcards')) ? $this->opt('flyp_cols_tightcards') : '';
+			$rowsquared = ($this->opt('flyp_cols_squarecards')) ? $this->opt('flyp_cols_squarecards') : '';
 
 			$height = ($this->opt('flyp_height')) ? $this->opt('flyp_height') : 200;
 					$height = preg_replace("/[^0-9]/","", $height);
@@ -542,15 +551,15 @@ class Flyp extends PageLinesSection {
 				$colorborder = is_array($colorborder) ? array_shift($colorborder) : $colorborder;
 				$colorborder = ($colorborder) ? pl_hashify($colorborder) : '';
 
-			$borderwidth = '';
-			$borderradius = '';
 			if($colorborder) {
 				$borderwidth = $this->opt('flyp_border_width') ? $this->opt('flyp_border_width') : 1;
 					$borderwidth = preg_replace("/[^0-9]/","", $borderwidth);
-
-				$borderradius = $this->opt('flyp_border_radius') ? $this->opt('flyp_border_radius') : 0;
-					$borderradius = preg_replace("/[^0-9]/","", $borderradius);
+			} else {
+				$borderwidth = 0;
 			}
+
+			$borderradius = $this->opt('flyp_border_radius') ? $this->opt('flyp_border_radius') : 0;
+				$borderradius = preg_replace("/[^0-9]/","", $borderradius);
 
 
 			$maxcontentheight = $height - $paddingtop - $paddingbottom - $borderwidth - $borderwidth; // make tall images and iframes behave
@@ -573,9 +582,12 @@ class Flyp extends PageLinesSection {
 					//array_shift: http://stackoverflow.com/a/6262225
 				$colortext = ($colortext) ? pl_hashify($colortext) : '';
 
-			$stylecontainer = sprintf('height: %spx;', $height);
+			if($rowsquared) { //no inline HEIGHT for .row-squared
+				$stylecontainer = ($colortext) ? sprintf('color: %s;', $colortext) : '';
+			} else {
+				$stylecontainer = sprintf('height: %spx;', $height);
 				$stylecontainer .= ($colortext) ? sprintf(' color: %s;', $colortext) : '';
-
+			}
 
 
 			if( $this->opt('flyp_color_bg_picker') ) {
@@ -772,6 +784,12 @@ class Flyp extends PageLinesSection {
 				}
 					$cardcolorborder = is_array($cardcolorborder) ? array_shift($cardcolorborder) : $cardcolorborder;
 					$cardcolorborder = ($cardcolorborder) ? pl_hashify($cardcolorborder) : $colorborder;
+				if($cardcolorborder && $borderwidth == 0) { //needed in case no border color is set at main level because that would set borderwidth to zero
+					$cardborderwidth = $this->opt('flyp_border_width') ? $this->opt('flyp_border_width') : 1;
+						$cardborderwidth = preg_replace("/[^0-9]/","", $cardborderwidth);
+				} else {
+					$cardborderwidth = $borderwidth; //zero
+				}
 
 
 
@@ -779,14 +797,22 @@ class Flyp extends PageLinesSection {
 			$styleeachcard = sprintf('padding: %spx %spx %spx %spx;', $paddingtop, $paddingright, $paddingbottom, $paddingleft);
 				$styleeachcard .= ($cardcolortext) ? sprintf(' color: %s;', $cardcolortext) : '';
 				$styleeachcard .= ($cardcolorbg) ? sprintf(' background-color: %s;', $cardcolorbg) : '';
-				$styleeachcard .= ($cardcolorborder) ? sprintf(' border-radius: %spx; border: %spx solid %s;', $borderradius, $borderwidth, $cardcolorborder) : '';
+				$styleeachcard .= ($borderradius) ? sprintf(' border-radius: %spx;', $borderradius) : '';
+				$styleeachcard .= ($cardcolorborder) ? sprintf(' border: %spx solid %s;', $cardborderwidth, $cardcolorborder) : '';
 
 
 				if($spans == 0){
+					//Closed
 					if($rowclosed) {
-						$output .= '<div class="row row-closed fix">';
+						$output .= '<div class="row row-closed';
 					} else {
-						$output .= '<div class="row fix">';
+						$output .= '<div class="row';
+					}
+					//Squared
+					if($rowsquared) {
+						$output .= ' row-squared fix">';
+					} else {
+						$output .= ' fix">';
 					}
 				}
 

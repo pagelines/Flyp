@@ -4,6 +4,13 @@ Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
 
+= 1.7 =
+* Now able to create square-shaped cards (.row-squared). Note: at some screen widths, square shape is abandoned for rectangle shape for better display (part of DMS core styling).
+* Tip: to create circle-shaped cards, use .row-squared and then set "Flyp Card Border Radius / Rounded Corners" to something like 2000px (will create ovals when not using square-shaped cards).
+* Fix so border-radius works even if no border is used.
+* Fix for when border color was set at per-card level but not also at main level.
+* Updated art.
+
 = 1.6 =
 * Fix for Mac Firefox v30 displaying front image on back of card when both sides had images. Props Chris Johnston.
 
