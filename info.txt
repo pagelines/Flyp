@@ -4,6 +4,9 @@ Flyp lets you make cards that flip over (front and back)
 
 == Changelog ==
 
+= 1.8 =
+* More robust handling of color picker options (same options, better underlying code). NOTE: Any color pickers set to one of the 3 PageLines Base Settings (background, text, link) will need to be re-selected and saved.
+
 = 1.7 =
 * Now able to create square-shaped cards (.row-squared). Note: at some screen widths, square shape is abandoned for rectangle shape for better display (part of DMS core styling).
 * Tip: to create circle-shaped cards, use .row-squared and then set "Flyp Card Border Radius / Rounded Corners" to something like 2000px (will create ovals when not using square-shaped cards).

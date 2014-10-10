@@ -5,7 +5,6 @@ Author: TourKick (Clifford P)
 Description: A PageLines DMS section that flips / turns over content (front and back). <a href="http://www.pagelinestheme.com/flyp-section?utm_source=pagelines&utm_medium=section&utm_content=descriptionlink&utm_campaign=flyp_section" target="_blank">Flyp</a> is a <a href="http://b.tourkick.com/myplshop" target="_blank">TourKick (Clifford P) product</a>.
 Class Name: Flyp
 Cloning: true
-PageLines: true
 v3: true
 Filter: component, dual-width
 */
@@ -18,6 +17,77 @@ Notes:
 */
 
 class Flyp extends PageLinesSection {
+
+	//$this->
+	function tk_color_options() {
+    	$sectioncoloroptions = array( // ALL HEX's LOWER-CASE
+			'bodybg'	=> array('name' => __('PL Background Base Setting', 'navdash') ),
+			'text_primary'	=> array('name' => __('PL Text Base Setting', 'navdash') ),
+			'linkcolor'	=> array('name' => __('PL Link Base Setting', 'navdash') ),
+			'#fbfbfb'	=> array('name' => __('Light Gray', 'navdash') ),
+			'#bfbfbf'	=> array('name' => __('Medium Gray', 'navdash') ),
+			'#1abc9c'	=> array('name' => __('* Turquoise', 'navdash') ),
+			'#16a085'	=> array('name' => __('* Green Sea', 'navdash') ),
+			'#40d47e'	=> array('name' => __('* Emerald', 'navdash') ),
+			'#27ae60'	=> array('name' => __('* Nephritis', 'navdash') ),
+			'#3498db'	=> array('name' => __('* Peter River', 'navdash') ),
+			'#2980b9'	=> array('name' => __('* Belize Hole', 'navdash') ),
+			'#9b59b6'	=> array('name' => __('* Amethyst', 'navdash') ),
+			'#8e44ad'	=> array('name' => __('* Wisteria', 'navdash') ),
+			'#34495e'	=> array('name' => __('* Wet Asphalt', 'navdash') ),
+			'#2c3e50'	=> array('name' => __('* Midnight Blue', 'navdash') ),
+			'#f1c40f'	=> array('name' => __('* Sun Flower', 'navdash') ),
+			'#f39c12'	=> array('name' => __('* Orange', 'navdash') ),
+			'#e67e22'	=> array('name' => __('* Carrot', 'navdash') ),
+			'#d35400'	=> array('name' => __('* Pumpkin', 'navdash') ),
+			'#e74c3c'	=> array('name' => __('* Alizarin', 'navdash') ),
+			'#c0392b'	=> array('name' => __('* Pomegranate', 'navdash') ),
+			'#ecf0f1'	=> array('name' => __('* Clouds', 'navdash') ),
+			'#bdc3c7'	=> array('name' => __('* Silver', 'navdash') ),
+			'#95a5a6'	=> array('name' => __('* Concrete', 'navdash') ),
+			'#7f8c8d'	=> array('name' => __('* Asbestos', 'navdash') ),
+			'#791869'	=> array('name' => __('Plum', 'navdash') ),
+			'#c23b3d'	=> array('name' => __('Red', 'navdash') ),
+			'#0c5cea'	=> array('name' => __('Blue', 'navdash') ),
+			'#00aff0'	=> array('name' => __('Light Blue', 'navdash') ),
+			'#88b500'	=> array('name' => __('Lime', 'navdash') ),
+			'#cf3f20'	=> array('name' => __('Orangey', 'navdash') ),
+			'#f27a00'	=> array('name' => __('Yellowy-Orange', 'navdash') ),
+		);
+
+		return $sectioncoloroptions;
+	}
+
+	//$this->
+	function tk_color_setter($colorpickerfield, $coloroptionfield, $colordefault = '') {
+		if( !preg_match('/^#/', $coloroptionfield) ) { //does not begin with a hash
+			$coloroptionfield = pl_check_color_hash(pl_setting($coloroptionfield)) ? pl_setting($coloroptionfield) : $coloroptionfield;
+
+			if( $coloroptionfield == 'bodybg' ) {
+				$coloroptionfield = '#FFFFFF';
+			} elseif( $coloroptionfield == 'text_primary' ) {
+				$coloroptionfield = '#000000';
+			} elseif( $coloroptionfield == 'linkcolor' ) {
+				$coloroptionfield = '#337EFF';
+			}
+		}
+
+		if( pl_check_color_hash($colorpickerfield) ) {
+			$setcolor = $colorpickerfield;
+		} elseif( pl_check_color_hash($coloroptionfield) ) {
+			$setcolor = $coloroptionfield;
+		} elseif( pl_check_color_hash($colordefault) ) {
+			$setcolor = $colordefault;
+		} else {
+			$setcolor = '';
+		}
+
+		if( pl_check_color_hash($setcolor) ) {
+			$setcolor = pl_hashify($setcolor);
+		}
+
+		return $setcolor;
+	}
 
 	function section_persistent() {
 
@@ -47,43 +117,6 @@ class Flyp extends PageLinesSection {
 
 
 	function section_opts(){
-
-
-		$colorpresets = array( // ALL HEX's LOWER-CASE
-			pl_hashify(pl_setting('bodybg'))	=> array('name' => __('PL Background Base Setting', 'flyp') ),
-			pl_hashify(pl_setting('text_primary'))	=> array('name' => __('PL Text Base Setting', 'flyp') ),
-			pl_hashify(pl_setting('linkcolor'))	=> array('name' => __('PL Link Base Setting', 'flyp') ),
-			'#fbfbfb'	=> array('name' => __('Light Gray', 'flyp') ),
-			'#bfbfbf'	=> array('name' => __('Medium Gray', 'flyp') ),
-			'#1abc9c'	=> array('name' => __('* Turquoise', 'flyp') ),
-			'#16a085'	=> array('name' => __('* Green Sea', 'flyp') ),
-			'#40d47e'	=> array('name' => __('* Emerald', 'flyp') ),
-			'#27ae60'	=> array('name' => __('* Nephritis', 'flyp') ),
-			'#3498db'	=> array('name' => __('* Peter River', 'flyp') ),
-			'#2980b9'	=> array('name' => __('* Belize Hole', 'flyp') ),
-			'#9b59b6'	=> array('name' => __('* Amethyst', 'flyp') ),
-			'#8e44ad'	=> array('name' => __('* Wisteria', 'flyp') ),
-			'#34495e'	=> array('name' => __('* Wet Asphalt', 'flyp') ),
-			'#2c3e50'	=> array('name' => __('* Midnight Blue', 'flyp') ),
-			'#f1c40f'	=> array('name' => __('* Sun Flower', 'flyp') ),
-			'#f39c12'	=> array('name' => __('* Orange', 'flyp') ),
-			'#e67e22'	=> array('name' => __('* Carrot', 'flyp') ),
-			'#d35400'	=> array('name' => __('* Pumpkin', 'flyp') ),
-			'#e74c3c'	=> array('name' => __('* Alizarin', 'flyp') ),
-			'#c0392b'	=> array('name' => __('* Pomegranate', 'flyp') ),
-			'#ecf0f1'	=> array('name' => __('* Clouds', 'flyp') ),
-			'#bdc3c7'	=> array('name' => __('* Silver', 'flyp') ),
-			'#95a5a6'	=> array('name' => __('* Concrete', 'flyp') ),
-			'#7f8c8d'	=> array('name' => __('* Asbestos', 'flyp') ),
-			'#791869'	=> array('name' => __('Plum', 'flyp') ),
-			'#c23b3d'	=> array('name' => __('Red', 'flyp') ),
-			'#0c5cea'	=> array('name' => __('Blue', 'flyp') ),
-			'#00aff0'	=> array('name' => __('Light Blue', 'flyp') ),
-			'#88b500'	=> array('name' => __('Lime', 'flyp') ),
-			'#cf3f20'	=> array('name' => __('Orangey', 'flyp') ),
-			'#f27a00'	=> array('name' => __('Yellowy-Orange', 'flyp') ),
-		);
-
 
 		$options = array();
 
@@ -244,7 +277,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '',
 					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_color_text_picker',
@@ -257,7 +290,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '#fbfbfb',
 					'label'	=> __('Flyp Background Color Preset<br/>Suggestion: Light Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_color_bg_picker',
@@ -270,7 +303,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '#bfbfbf',
 					'label'	=> __('Flyp Border Color Preset<br/>Suggestion: Medium Gray<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_color_border_picker',
@@ -441,7 +474,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '',
 					'label'	=> __('Flyp Text Color Preset<br/>Default: "PL Text Base Setting"<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_card_color_text_picker',
@@ -454,7 +487,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '#fbfbfb',
 					'label'	=> __('Flyp Background Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_card_color_bg_picker',
@@ -467,7 +500,7 @@ class Flyp extends PageLinesSection {
 					'type' 	=> 'select',
 					//'default' => '#bfbfbf',
 					'label'	=> __('Flyp Border Color Preset<br/>(* are from <a href="http://flatuicolors.com/" target="_blank">FlatUIcolors.com</a>)', 'flyp'),
-					'opts' => $colorpresets,
+					'opts' => $this->tk_color_options(),
 				),
 				array(
 					'key'	=> 'flyp_card_color_border_picker',
@@ -541,15 +574,9 @@ class Flyp extends PageLinesSection {
 
 
 
-			if( $this->opt('flyp_color_border_picker') ) {
-				$colorborder = $this->opt('flyp_color_border_picker');
-			} elseif( $this->opt('flyp_color_border') ) {
-				$colorborder = $this->opt('flyp_color_border');
-			} else {
-				$colorborder = '';
-			}
-				$colorborder = is_array($colorborder) ? array_shift($colorborder) : $colorborder;
-				$colorborder = ($colorborder) ? pl_hashify($colorborder) : '';
+			$colorborder = $this->tk_color_setter(
+				$this->opt('flyp_color_border_picker'),
+				$this->opt('flyp_color_border'));
 
 			if($colorborder) {
 				$borderwidth = $this->opt('flyp_border_width') ? $this->opt('flyp_border_width') : 1;
@@ -571,16 +598,9 @@ class Flyp extends PageLinesSection {
 			$shadow = $this->opt('flyp_shadow') ? $this->opt('flyp_shadow') : 'shadow';
 
 
-			if( $this->opt('flyp_color_text_picker') ) {
-				$colortext = $this->opt('flyp_color_text_picker');
-			} elseif( $this->opt('flyp_color_text') ) {
-				$colortext = $this->opt('flyp_color_text');
-			} else {
-				$colortext = '';
-			}
-				$colortext = is_array($colortext) ? array_shift($colortext) : $colortext;
-					//array_shift: http://stackoverflow.com/a/6262225
-				$colortext = ($colortext) ? pl_hashify($colortext) : '';
+			$colortext = $this->tk_color_setter(
+				$this->opt('flyp_color_text_picker'),
+				$this->opt('flyp_color_text'));
 
 			if($rowsquared) { //no inline HEIGHT for .row-squared
 				$stylecontainer = ($colortext) ? sprintf('color: %s;', $colortext) : '';
@@ -590,16 +610,9 @@ class Flyp extends PageLinesSection {
 			}
 
 
-			if( $this->opt('flyp_color_bg_picker') ) {
-				$colorbg = $this->opt('flyp_color_bg_picker');
-			} elseif( $this->opt('flyp_color_bg') ) {
-				$colorbg = $this->opt('flyp_color_bg');
-			} else {
-				$colorbg = '';
-			}
-				$colorbg = is_array($colorbg) ? array_shift($colorbg) : $colorbg;
-				$colorbg = ($colorbg) ? pl_hashify($colorbg) : '';
-
+			$colorbg = $this->tk_color_setter(
+				$this->opt('flyp_color_bg_picker'),
+				$this->opt('flyp_color_bg'));
 
 
 			// EACH ACCORDION
@@ -755,35 +768,20 @@ class Flyp extends PageLinesSection {
 
 
 				//individual card's color settings
-				if( pl_array_get('flyp_card_color_text_picker', $flypitem, '') ) {
-					$cardcolortext = pl_array_get('flyp_card_color_text_picker', $flypitem, '');
-				} elseif( pl_array_get('flyp_card_color_text', $flypitem, '') ) {
-					$cardcolortext = pl_array_get('flyp_card_color_text', $flypitem, '');
-				} else {
-					$cardcolortext = '';
-				}
-					$cardcolortext = is_array($cardcolortext) ? array_shift($cardcolortext) : $cardcolortext;
-					$cardcolortext = ($cardcolortext) ? pl_hashify($cardcolortext) : $colortext;
+				$cardcolortext = $this->tk_color_setter(
+					pl_array_get('flyp_card_color_text_picker', $flypitem, ''),
+					pl_array_get('flyp_card_color_text', $flypitem, ''));
 
-				if( pl_array_get('flyp_card_color_bg_picker', $flypitem, '') ) {
-					$cardcolorbg = pl_array_get('flyp_card_color_bg_picker', $flypitem, '');
-				} elseif( pl_array_get('flyp_card_color_bg', $flypitem, '') ) {
-					$cardcolorbg = pl_array_get('flyp_card_color_bg', $flypitem, '');
-				} else {
-					$cardcolorbg = '';
-				}
-					$cardcolorbg = is_array($cardcolorbg) ? array_shift($cardcolorbg) : $cardcolorbg;
-					$cardcolorbg = ($cardcolorbg) ? pl_hashify($cardcolorbg) : $colorbg;
+				$cardcolorbg = $this->tk_color_setter(
+					pl_array_get('flyp_card_color_bg_picker', $flypitem, ''),
+					pl_array_get('flyp_card_color_bg', $flypitem, ''),
+					$colorbg);
 
-				if( pl_array_get('flyp_card_color_border_picker', $flypitem, '') ) {
-					$cardcolorborder = pl_array_get('flyp_card_color_border_picker', $flypitem, '');
-				} elseif( pl_array_get('flyp_card_color_border', $flypitem, '') ) {
-					$cardcolorborder = pl_array_get('flyp_card_color_border', $flypitem, '');
-				} else {
-					$cardcolorborder = '';
-				}
-					$cardcolorborder = is_array($cardcolorborder) ? array_shift($cardcolorborder) : $cardcolorborder;
-					$cardcolorborder = ($cardcolorborder) ? pl_hashify($cardcolorborder) : $colorborder;
+				$cardcolorborder = $this->tk_color_setter(
+					pl_array_get('flyp_card_color_border_picker', $flypitem, ''),
+					pl_array_get('flyp_card_color_border', $flypitem, ''),
+					$colorborder);
+
 				if($cardcolorborder && $borderwidth == 0) { //needed in case no border color is set at main level because that would set borderwidth to zero
 					$cardborderwidth = $this->opt('flyp_border_width') ? $this->opt('flyp_border_width') : 1;
 						$cardborderwidth = preg_replace("/[^0-9]/","", $cardborderwidth);
